@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Guide TV – UltimTV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    background: #05070b;
+    color: #fff;
+    font-family: Arial;
+}
+
+.header {
+    background: #0b0f16;
+    padding: 14px 20px;
+    font-size: 20px;
+    border-bottom: 1px solid #1b202a;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.sidebar {
+    width: 180px;
+    background: #0b0f16;
+    border-right: 1px solid #1b202a;
+    overflow-y: auto;
+}
+
+.channel {
+    padding: 12px;
+    border-bottom: 1px solid #1b202a;
+    cursor: pointer;
+}
+
+.channel:hover {
+    background: #141820;
+}
+
+.grid {
+    flex: 1;
+    padding: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.program {
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    background: #141820;
+    border: 1px solid #222630;
+    margin-right: 6px;
+    padding: 6px;
+    border-radius: 6px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">📅 Guide TV</div>
+<h1>La page est actuellement en test. Aucun programme n'est vrai pour le moment </h1>
+<div class="container">
+
+    <div class="sidebar">
+        <div class="channel">TF1</div>
+        <div class="channel">France 2</div>
+        <div class="channel">M6</div>
+        <div class="channel">C8</div>
+        <div class="channel">W9</div>
+        <div class="channel">TMC</div>
+    </div>
+
+    <div class="grid">
+        <div class="program">Programme 1</div>
+        <div class="program">Programme 2</div>
+        <div class="program">Programme 3</div>
+        <div class="program">Programme 4</div>
+        <div class="program">Programme 5</div>
+    </div>
+
+</div>
+
+</body>
+</html>
