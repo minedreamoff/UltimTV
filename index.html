@@ -1,100 +1,174 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>UltimTV</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>UltimTV – LE service qui respecte VOS données.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    background: #05070b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.header {
+    background: #0b0f16;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1b202a;
+}
+
+.header-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.header-title span {
+    color: #ff6b00;
+}
+
+.header a {
+    color: #4da3ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* CHAÎNES */
+.channel-list {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.channel {
+    background: #10141d;
+    border: 1px solid #1f2430;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.channel-logo {
+    width: 140px;
+    height: 80px;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.channel-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.channel h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.epg {
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.epg-now {
+    color: #ff4d4d;
+}
+
+.epg-next {
+    color: #4da3ff;
+}
+
+.watch-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #ff6b00;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.watch-btn:hover {
+    background: #ff7f2a;
+}
+
+/* PLAYER */
+#player-container {
+    padding: 20px;
+    display: none;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+    background: #000;
+}
+</style>
+
 </head>
 <body>
 
-<header class="topbar">
-    <div class="left">
-        <img src="img/logo-alturetv.png" alt="AltureTV" class="logo">
-        <span class="brand">UltimTV</span>
-        <span class="powered">LE service de télévision et VOD qui respecte VOS données.</span>
+<div class="header">
+    <div class="header-title">Ultim<span>TV</span></div>
+    <a href="guide.html">📅 Guide TV</a>
+</div>
+
+<div id="player-container">
+    <video id="player" controls autoplay></video>
+</div>
+
+<div class="channel-list">
+
+    <!-- Exemple TF1 -->
+    <div class="channel">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/TF1_logo_2013.svg">
+        </div>
+        <h3>TF1</h3>
+
+        <div class="epg">
+            <div class="epg-now">🔴 En direct : Programme inconnu</div>
+            <div class="epg-next">➡️ Suivant : Programme inconnu</div>
+        </div>
+
+        <button class="watch-btn" onclick="playChannel('https://example.com/tf1.m3u8')">Regarder</button>
     </div>
-    <div class="right">
-        <span class="time" id="time">--:--:--</span>
-        <button class="menu-btn">☰</button>
+
+    <!-- Exemple France 2 -->
+    <div class="channel">
+        <div class="channel-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/France_2_logo_2018.svg">
+        </div>
+        <h3>France 2</h3>
+
+        <div class="epg">
+            <div class="epg-now">🔴 En direct : Programme inconnu</div>
+            <div class="epg-next">➡️ Suivant : Programme inconnu</div>
+        </div>
+
+        <button class="watch-btn" onclick="playChannel('https://example.com/france2.m3u8')">Regarder</button>
     </div>
-</header>
 
-<nav class="nav">
-    <a href="#" class="nav-item active">En direct</a>
-    <a href="#" class="nav-item">Replays</a>
-    <a href="#" class="nav-item">VOD</a>
-    <a href="#" class="nav-item">Favoris</a>
-    <a href="#" class="nav-item">Paramètres</a>
-</nav>
-
-<main class="content">
-    <h1>📺 En direct</h1>
-
-    <section class="channels">
-
-        <!-- Exemple chaîne -->
-        <article class="channel">
-            <div class="channel-logo">
-                <img src="img/channels/tf1.png" alt="TF1">
-            </div>
-            <div class="channel-info">
-                <h2>TF1</h2>
-                <p class="epg-title">Donnée EPG inconnue</p>
-                <p class="epg-meta">En direct - TF1 | Inconnu - Inconnu | Inconnu</p>
-                <button class="watch-btn">Regarder</button>
-            </div>
-        </article>
-
-        <article class="channel">
-            <div class="channel-logo">
-                <img src="img/channels/bfmtv.png" alt="BFMTV">
-            </div>
-            <div class="channel-info">
-                <h2>BFMTV</h2>
-                <p class="epg-title">Donnée EPG inconnue</p>
-                <p class="epg-meta">En direct - BFMTV | Inconnu - Inconnu | Inconnu</p>
-                <button class="watch-btn">Regarder</button>
-            </div>
-        </article>
-
-        <article class="channel">
-            <div class="channel-logo">
-                <img src="img/channels/novo19.jpeg" alt="Novo19">
-            </div>
-            <div class="channel-info">
-                <h2>Novo19</h2>
-                <p class="epg-title">Donnée EPG inconnue</p>
-                <p class="epg-meta">En direct - Novo19 | Inconnu - Inconnu | Inconnu</p>
-                <button class="watch-btn">Regarder</button>
-            </div>
-        </article>
-
-        <article class="channel">
-            <div class="channel-logo">
-                <img src="img/channels/t18.jpeg" alt="T18">
-            </div>
-            <div class="channel-info">
-                <h2>T18</h2>
-                <p class="epg-title">Donnée EPG inconnue</p>
-                <p class="epg-meta">En direct - T18 | Inconnu - Inconnu | Inconnu</p>
-                <button class="watch-btn">Regarder</button>
-            </div>
-        </article>
-
-        <!-- Tu peux dupliquer ce bloc <article> pour ajouter d'autres chaînes -->
-
-    </section>
-</main>
+    <!-- Ajoute ici toutes tes chaînes -->
+</div>
 
 <script>
-function updateTime() {
-    const el = document.getElementById('time');
-    const d = new Date();
-    el.textContent = d.toLocaleTimeString('fr-FR', { hour12: false });
+function playChannel(url) {
+    document.getElementById("player-container").style.display = "block";
+    const player = document.getElementById("player");
+    player.src = url;
+    player.play();
+    window.scrollTo(0, 0);
 }
-setInterval(updateTime, 1000);
-updateTime();
 </script>
 
 </body>
