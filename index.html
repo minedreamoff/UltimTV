@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>UltimTV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="left">
+        <img src="img/logo-alturetv.png" alt="AltureTV" class="logo">
+        <span class="brand">UltimTV</span>
+        <span class="powered">LE service de télévision et VOD qui respecte VOS données.</span>
+    </div>
+    <div class="right">
+        <span class="time" id="time">--:--:--</span>
+        <button class="menu-btn">☰</button>
+    </div>
+</header>
+
+<nav class="nav">
+    <a href="#" class="nav-item active">En direct</a>
+    <a href="#" class="nav-item">Replays</a>
+    <a href="#" class="nav-item">VOD</a>
+    <a href="#" class="nav-item">Favoris</a>
+    <a href="#" class="nav-item">Paramètres</a>
+</nav>
+
+<main class="content">
+    <h1>📺 En direct</h1>
+
+    <section class="channels">
+
+        <!-- Exemple chaîne -->
+        <article class="channel">
+            <div class="channel-logo">
+                <img src="img/channels/tf1.png" alt="TF1">
+            </div>
+            <div class="channel-info">
+                <h2>TF1</h2>
+                <p class="epg-title">Donnée EPG inconnue</p>
+                <p class="epg-meta">En direct - TF1 | Inconnu - Inconnu | Inconnu</p>
+                <button class="watch-btn">Regarder</button>
+            </div>
+        </article>
+
+        <article class="channel">
+            <div class="channel-logo">
+                <img src="img/channels/bfmtv.png" alt="BFMTV">
+            </div>
+            <div class="channel-info">
+                <h2>BFMTV</h2>
+                <p class="epg-title">Donnée EPG inconnue</p>
+                <p class="epg-meta">En direct - BFMTV | Inconnu - Inconnu | Inconnu</p>
+                <button class="watch-btn">Regarder</button>
+            </div>
+        </article>
+
+        <article class="channel">
+            <div class="channel-logo">
+                <img src="img/channels/novo19.jpeg" alt="Novo19">
+            </div>
+            <div class="channel-info">
+                <h2>Novo19</h2>
+                <p class="epg-title">Donnée EPG inconnue</p>
+                <p class="epg-meta">En direct - Novo19 | Inconnu - Inconnu | Inconnu</p>
+                <button class="watch-btn">Regarder</button>
+            </div>
+        </article>
+
+        <article class="channel">
+            <div class="channel-logo">
+                <img src="img/channels/t18.jpeg" alt="T18">
+            </div>
+            <div class="channel-info">
+                <h2>T18</h2>
+                <p class="epg-title">Donnée EPG inconnue</p>
+                <p class="epg-meta">En direct - T18 | Inconnu - Inconnu | Inconnu</p>
+                <button class="watch-btn">Regarder</button>
+            </div>
+        </article>
+
+        <!-- Tu peux dupliquer ce bloc <article> pour ajouter d'autres chaînes -->
+
+    </section>
+</main>
+
+<script>
+function updateTime() {
+    const el = document.getElementById('time');
+    const d = new Date();
+    el.textContent = d.toLocaleTimeString('fr-FR', { hour12: false });
+}
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+
+</body>
+</html>
